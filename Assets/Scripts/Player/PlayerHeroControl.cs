@@ -6,20 +6,25 @@ public class PlayerHeroControl : MonoBehaviour
 {
     public PlayerData playerData;
 
+    [SerializeField] private int id;
+
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnPlayerHero,OnPlayerHero);
+        EventManager.AddIdHandler(GameEvent.OnPlayerHero,OnPlayerHero);
     }
 
     private void OnDisable() 
     {
-        EventManager.RemoveHandler(GameEvent.OnPlayerHero,OnPlayerHero);
+        EventManager.RemoveIdHandler(GameEvent.OnPlayerHero,OnPlayerHero);
     }
 
-    private void OnPlayerHero()
+    private void OnPlayerHero(int _id)
     {
-        Debug.Log("HERO OLDU");
-        StartCoroutine(ResetHero());
+        if(_id==id)
+        {
+            Debug.Log("HERO OLDU");
+            StartCoroutine(ResetHero());
+        }
     }
 
     private IEnumerator ResetHero()

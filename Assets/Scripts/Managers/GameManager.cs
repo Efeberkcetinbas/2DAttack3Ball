@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public float InitialDifficultyValue;
 
+    public List<GameObject> LinesCol=new List<GameObject>(); 
+    public bool canCollide=false;
 
     private void Awake() 
     {
@@ -39,6 +41,17 @@ public class GameManager : MonoBehaviour
         gameData.isGameEnd=true;
 
     }
+
+    public void LineOpenControl(int selected)
+    {
+        for (int i = 0; i < LinesCol.Count; i++)
+        {
+            LinesCol[i].SetActive(false);
+        }
+
+        LinesCol[selected].SetActive(true);
+    }
+
     
 
     void OnIncreaseScore()

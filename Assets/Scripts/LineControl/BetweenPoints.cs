@@ -7,6 +7,8 @@ public class BetweenPoints : Interactable
     //Next levelde true olsun
     private bool canPass=true;
 
+    [SerializeField] private int customId;
+
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnPlayerHero,OnPlayerHero);
@@ -21,12 +23,17 @@ public class BetweenPoints : Interactable
 
     internal override void DoAction(PlayerTrigger player)
     {
-        Debug.Log("GREEN");
+        //Debug.Log("IT PASSEDDDD");
     }
     internal override void InteractionExit(PlayerTrigger player)
     {
-        if(canPass)
-            EventManager.Broadcast(GameEvent.OnPlayerHero);
+        Debug.Log("NASIL GIRDI");
+        if(canPass && customId==player.Playerid)
+        {
+            EventManager.BroadcastId(GameEvent.OnPlayerHero,customId);
+            Debug.Log("THIS TIME");
+        }
+            
     }
 
     private void OnPlayerNormal()

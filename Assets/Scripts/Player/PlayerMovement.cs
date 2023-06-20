@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Camera cm;
 
+    //Open Close Prensibi Kullan
+    public GameManager gameManager;
+    public PlayerManager playerManager;
     
 
     private void Start()
@@ -81,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
         dragStartPos.z = 0f;
         lrManager.lineRenderer.positionCount = 1;
         lrManager.lineRenderer.SetPosition(0, dragStartPos);
+        gameManager.LineOpenControl(playerManager.index);
+        gameManager.canCollide=false;
         //EventManager.Broadcast(GameEvent.OnFingerPress);
     }
     private void Dragging()
@@ -100,5 +105,22 @@ public class PlayerMovement : MonoBehaviour
         Vector3 force = dragStartPos - dragReleasePos;
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
         rb.AddForce(clampedForce, ForceMode2D.Impulse);
+        gameManager.canCollide=true;
+        StartCoroutine(Call());
+    }
+
+    private IEnumerator Call()
+    {
+        yield return null;
+        CallBallManager();
+    }
+
+
+    private void CallBallManager()
+    {
+        playerManager.IncreaseIndex();
+        playerManager.CheckIndex();
+        playerManager.OpenSignal();
+
     }
 }
