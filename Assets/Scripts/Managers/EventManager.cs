@@ -6,6 +6,8 @@ public enum GameEvent
 {
     //Player
     OnTargetHit,
+    OnPlayerHero,
+    OnPlayerNormal,
 
 
     //Game Management

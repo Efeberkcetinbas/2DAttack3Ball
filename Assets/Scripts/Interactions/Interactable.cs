@@ -9,14 +9,21 @@ public abstract class Interactable : MonoBehaviour
     internal bool canInteract = true;
     internal string interactionTag = "Player";
 
-
-
-    void OnTriggerExit2D(Collider2D other)
+    
+    private void OnTriggerEnter2D(Collider2D other) 
     {
         if (!canInteract) return;
         if (other.tag == interactionTag)
         {
             StartInteractWithPlayer(other.GetComponent<PlayerTrigger>());
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (!canInteract) return;
+        if (other.tag == interactionTag)
+        {
+            ExitInteractWithPlayer(other.GetComponent<PlayerTrigger>());
         }
     }
     
@@ -30,17 +37,15 @@ public abstract class Interactable : MonoBehaviour
             InteractWithPlayer(other.GetComponent<Player>());
         }*/
     }
-    /*void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == interactionTag)
-        {
-            InteractionExit(other.GetComponent<Player>());
-        }
-    }
-*/
+    
     void StartInteractWithPlayer(PlayerTrigger player)
     {
         DoAction(player);
+    }
+
+    void ExitInteractWithPlayer(PlayerTrigger player)
+    {
+        InteractionExit(player);
     }
 
     void InteractWithPlayer(PlayerTrigger player)

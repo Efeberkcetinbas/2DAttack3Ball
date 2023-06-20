@@ -97,37 +97,9 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 dragReleasePos = cm.ScreenToWorldPoint(touch.position);
         dragStartPos.z = 0f;
-        //GameManager.Instance.isWall=false;
 
         Vector3 force = dragStartPos - dragReleasePos;
         Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
         rb.AddForce(clampedForce, ForceMode2D.Impulse);
-        //gameManager.canCollide=true;
-        //EventManager.Broadcast(GameEvent.OnFingerRelease);
-
-        
-
-        
-        
-        //StartCoroutine(Call());
     }
-
-    /*private IEnumerator Call()
-    {
-        yield return null;
-        CallBallManager();
-    }*/
-
-    /*private void CallBallManager()
-    {
-        ballManager.IncreaseIndex();
-        ballManager.CheckIndex();
-        ballManager.OpenSignal();
-
-        /*
-        Added For Trying Progress and Requirement
-        */
-        
-    //}
-
 }

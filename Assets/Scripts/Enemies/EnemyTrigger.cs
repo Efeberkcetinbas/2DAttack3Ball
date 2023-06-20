@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BetweenPoints : Interactable
+public class EnemyTrigger : Interactable
 {
-    //Next levelde true olsun
-    private bool canPass=true;
+    private bool canDamage=false;
+    [SerializeField] private float health;
 
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnPlayerHero,OnPlayerHero);
         EventManager.AddHandler(GameEvent.OnPlayerNormal,OnPlayerNormal);
+        
     }
 
     private void OnDisable() 
@@ -19,23 +20,40 @@ public class BetweenPoints : Interactable
         EventManager.RemoveHandler(GameEvent.OnPlayerNormal,OnPlayerNormal);
     }
 
+
     internal override void DoAction(PlayerTrigger player)
     {
-        Debug.Log("GREEN");
+        if(!canDamage)
+        {
+            health--;
+            Debug.Log("ENEMY YARALANDI");
+        }
+
+        else
+        {
+            Debug.Log("FAILLLL");
+        }
     }
+
     internal override void InteractionExit(PlayerTrigger player)
     {
-        if(canPass)
-            EventManager.Broadcast(GameEvent.OnPlayerHero);
+        if(health<=0) Dead();
+    }
+
+    private void Dead()
+    {
+
+    } 
+
+    private void OnPlayerHero()
+    {
+        canDamage=false;
     }
 
     private void OnPlayerNormal()
     {
-        canPass=true;
+        canDamage=true;
     }
-
-    private void OnPlayerHero()
-    {
-        canPass=false;
-    }
+    
+   
 }
