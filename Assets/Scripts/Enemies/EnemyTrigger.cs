@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTrigger : Interactable
 {
-    private bool canDamage=false;
+    [SerializeField] private bool playerCanDamage=false;
     [SerializeField] private float health;
 
     private void OnEnable() 
@@ -23,7 +23,7 @@ public class EnemyTrigger : Interactable
 
     internal override void DoAction(PlayerTrigger player)
     {
-        if(!canDamage)
+        if(playerCanDamage)
         {
             health--;
             Debug.Log("ENEMY YARALANDI");
@@ -47,12 +47,12 @@ public class EnemyTrigger : Interactable
 
     private void OnPlayerHero()
     {
-        canDamage=false;
+        playerCanDamage=true;
     }
 
     private void OnPlayerNormal()
     {
-        canDamage=true;
+        playerCanDamage=false;
     }
     
    

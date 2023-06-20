@@ -9,6 +9,9 @@ public enum GameEvent
     OnPlayerHero,
     OnPlayerNormal,
 
+    //Touch
+    OnFingerPress,
+
 
     //Game Management
     OnIncreaseScore,

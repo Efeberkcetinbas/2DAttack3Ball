@@ -77,12 +77,11 @@ public class PlayerMovement : MonoBehaviour
     private void DragStart()
     {
         dragStartPos = cm.ScreenToWorldPoint(touch.position);
-        rb.constraints=RigidbodyConstraints2D.None;
+        //rb.constraints=RigidbodyConstraints2D.None;
         dragStartPos.z = 0f;
         lrManager.lineRenderer.positionCount = 1;
         lrManager.lineRenderer.SetPosition(0, dragStartPos);
-        //gameManager.canCollide=false;
-        //gameManager.LineOpenControl(ballManager.index);
+        //EventManager.Broadcast(GameEvent.OnFingerPress);
     }
     private void Dragging()
     {
