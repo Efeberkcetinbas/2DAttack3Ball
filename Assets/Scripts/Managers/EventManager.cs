@@ -8,6 +8,7 @@ public enum GameEvent
     OnTargetHit,
     OnPlayerHero,
     OnPlayerNormal,
+    OnUpdateWorld,
 
     //Touch
     OnFingerPress,

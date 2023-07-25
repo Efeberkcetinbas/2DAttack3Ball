@@ -16,7 +16,7 @@ public class CircleTrigger : Interactable
         Debug.Log("INTERACTION HAS BEGAN");
         if(player.PlayerNumber==circleProperties.Number)
         {
-            player.PlayerNumber*=2;
+            player.PlayerNumber+=1;
             player.UpdatePlayerNumberText();
             Destroy(gameObject);
         }

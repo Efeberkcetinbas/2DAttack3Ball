@@ -8,8 +8,13 @@ public class PlayerTrigger : MonoBehaviour
 
     public TextMeshPro PlayerNumberText;
 
+    private void Start() 
+    {
+        UpdatePlayerNumberText();
+    }
     internal void UpdatePlayerNumberText()
     {
         PlayerNumberText.SetText(PlayerNumber.ToString());
+        EventManager.Broadcast(GameEvent.OnUpdateWorld);
     }
 }
