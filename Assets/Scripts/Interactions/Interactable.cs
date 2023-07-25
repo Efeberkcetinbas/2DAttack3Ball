@@ -45,7 +45,7 @@ public abstract class Interactable : MonoBehaviour
 
     void ExitInteractWithPlayer(PlayerTrigger player)
     {
-        InteractionExit(player);
+        //InteractionExit(player);
     }
 
     void InteractWithPlayer(PlayerTrigger player)
