@@ -6,12 +6,13 @@ public enum GameEvent
 {
     //Player
     OnTargetHit,
-    OnPlayerHero,
-    OnPlayerNormal,
     OnUpdateWorld,
 
     //Touch
     OnFingerPress,
+
+    //Merge
+    OnMerge,
 
 
     //Game Management

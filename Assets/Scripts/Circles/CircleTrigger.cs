@@ -18,6 +18,7 @@ public class CircleTrigger : Interactable
         {
             player.PlayerNumber+=1;
             player.UpdatePlayerNumberText();
+            EventManager.Broadcast(GameEvent.OnMerge);
             Destroy(gameObject);
         }
 

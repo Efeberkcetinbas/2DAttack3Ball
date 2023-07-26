@@ -14,10 +14,6 @@ public class CameraManager : MonoBehaviour
     Vector3 cameraInitialPosition;
 
     [Header("Shake Control")]
-    public float shakeMagnitude = 0.05f;
-    public float shakeTime = 0.5f;
-    public float amplitudeGain=1;
-    public float frequencyGain=1;
     private CinemachineBasicMultiChannelPerlin noise;
 
 
@@ -33,16 +29,24 @@ public class CameraManager : MonoBehaviour
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
+        EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
     }
 
     private void OnNextLevel()
     {
         ChangeFieldOfView(5,0.1f);
+    }
+
+    private void OnMerge()
+    {
+        Noise(1,1,0.3f);
+        ChangeFieldOfViewHit(9,10,0.1f);
     }
 
     private void Noise(float amplitudeGain,float frequencyGain,float shakeTime) 

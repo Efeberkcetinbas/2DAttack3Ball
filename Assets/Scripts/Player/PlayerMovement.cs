@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //CheckMove();
             StartCoroutine(ChangeRadius());
+            EventManager.Broadcast(GameEvent.OnFingerPress);
         }
     }
 

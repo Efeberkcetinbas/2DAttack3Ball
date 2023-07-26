@@ -10,7 +10,7 @@ public class PlayerTrigger : MonoBehaviour
 
     private void Start() 
     {
-        UpdatePlayerNumberText();
+        //UpdatePlayerNumberText();
     }
     internal void UpdatePlayerNumberText()
     {

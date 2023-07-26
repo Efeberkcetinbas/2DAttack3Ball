@@ -27,7 +27,6 @@ public class PlayerWorld : MonoBehaviour
 
     private void OnUpdateWorld()
     {
-        //Merge Sort'da ve Three Balls'da da aynisini kullanabilirsin
         spriteRenderer.sprite=worlds[playerTrigger.PlayerNumber];
     }
 }
