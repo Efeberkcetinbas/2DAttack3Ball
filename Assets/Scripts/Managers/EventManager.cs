@@ -7,12 +7,17 @@ public enum GameEvent
     //Player
     OnTargetHit,
     OnUpdateWorld,
+    OnDead,
 
     //Touch
     OnFingerPress,
 
     //Merge
     OnMerge,
+
+    //Buffs
+    OnInvincible,
+    OnNonInvincible,
 
 
     //Game Management

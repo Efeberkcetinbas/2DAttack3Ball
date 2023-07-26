@@ -8,13 +8,40 @@ public class PlayerTrigger : MonoBehaviour
 
     public TextMeshPro PlayerNumberText;
 
-    private void Start() 
+    [Header("Particles")]
+    public ParticleSystem InvincibleBuffParticle;
+    public GameObject ExplosionParticle;
+    public ParticleSystem MergeParticle;
+
+
+    
+
+    private void OnEnable() 
     {
-        //UpdatePlayerNumberText();
+        EventManager.AddHandler(GameEvent.OnNonInvincible,OnNonInvincible);
+        EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
+        
     }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnNonInvincible,OnNonInvincible);
+        EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
+    }
+
     internal void UpdatePlayerNumberText()
     {
         PlayerNumberText.SetText(PlayerNumber.ToString());
         EventManager.Broadcast(GameEvent.OnUpdateWorld);
+    }
+
+    private void OnNonInvincible()
+    {
+        InvincibleBuffParticle.Stop();
+    }
+
+    private void OnMerge()
+    {
+        MergeParticle.Play();
     }
 }

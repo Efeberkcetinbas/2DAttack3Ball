@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     private int increaseAmount;
 
+    public GameData gameData;
+
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if(canClick && Input.GetMouseButtonDown(0))
+        if(!gameData.isGameEnd && canClick && Input.GetMouseButtonDown(0))
         {
             //CheckMove();
             StartCoroutine(ChangeRadius());

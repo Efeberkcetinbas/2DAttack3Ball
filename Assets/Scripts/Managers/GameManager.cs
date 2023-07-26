@@ -11,10 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject FailPanel;
     [SerializeField] private Ease ease;
 
-    public float InitialDifficultyValue;
 
     public List<GameObject> LinesCol=new List<GameObject>(); 
-    public bool canCollide=false;
 
     private void Awake() 
     {
@@ -26,11 +24,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        EventManager.AddHandler(GameEvent.OnDead,OnDead);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
+        EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
     }
     
     void OnGameOver()
@@ -80,7 +80,12 @@ public class GameManager : MonoBehaviour
     
     void ClearData()
     {
+        gameData.isGameEnd=false;
+    }
 
+    private void OnDead()
+    {
+        gameData.isGameEnd=true;
     }
 
     

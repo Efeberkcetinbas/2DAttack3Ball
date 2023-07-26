@@ -30,12 +30,14 @@ public class CameraManager : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.AddHandler(GameEvent.OnDead,OnDead);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
     }
 
     private void OnNextLevel()
@@ -47,6 +49,12 @@ public class CameraManager : MonoBehaviour
     {
         Noise(1,1,0.3f);
         ChangeFieldOfViewHit(9,10,0.1f);
+    }
+
+    private void OnDead()
+    {
+        Noise(3,3,2);
+        ChangeFieldOfView(8,0.3f);
     }
 
     private void Noise(float amplitudeGain,float frequencyGain,float shakeTime) 

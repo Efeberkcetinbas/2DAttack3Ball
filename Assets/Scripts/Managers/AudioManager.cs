@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip GameLoop,BuffMusic;
-    public AudioClip GameOverSound,FingerTouchSound,MergeSound;
+    public AudioClip GameOverSound,FingerTouchSound,MergeSound,DeadSound;
 
     AudioSource musicSource,effectSource;
 
@@ -25,12 +25,14 @@ public class AudioManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnGameOver,OnGameOver);
         EventManager.AddHandler(GameEvent.OnFingerPress,OnFingerPress);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.AddHandler(GameEvent.OnDead,OnDead);
     }
     private void OnDisable() 
     {
         EventManager.RemoveHandler(GameEvent.OnGameOver,OnGameOver);
         EventManager.RemoveHandler(GameEvent.OnFingerPress,OnFingerPress);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
     }
 
 
@@ -47,6 +49,11 @@ public class AudioManager : MonoBehaviour
     private void OnMerge()
     {
         effectSource.PlayOneShot(MergeSound);
+    }
+
+    private void OnDead()
+    {
+        effectSource.PlayOneShot(DeadSound);
     }
 
 }
