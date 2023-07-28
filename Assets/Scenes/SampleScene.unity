@@ -223,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6373531
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: ddcac1fac1f5c8943a30c2ef6b724062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1048,7 +1048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &234013799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,7 +1381,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.60784316, g: 0.56078434, b: 0.5176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1935,7 +1935,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -6
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.60784316, g: 0.56078434, b: 0.5176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2393,7 +2393,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -8
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.60784316, g: 0.56078434, b: 0.5176471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2956,7 +2956,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -9
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.2716714, g: 0.30069086, b: 0.3490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3467,7 +3467,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: efe6ce32a6a4408489775c70e5d32f11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3978,7 +3978,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.2716714, g: 0.30069086, b: 0.3490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4502,7 +4502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1353766192
 Transform:
   m_ObjectHideFlags: 0
@@ -4558,7 +4558,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5092,7 +5092,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: c6944f9f15bd0ca4087bcdf033f0e162, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5431,7 +5431,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: d9b31ebd60af68c469212c1a9f513e74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5976,7 +5976,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -7
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.2716714, g: 0.30069086, b: 0.3490566, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.050980393}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6349,7 +6349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1941202606
 Transform:
   m_ObjectHideFlags: 0

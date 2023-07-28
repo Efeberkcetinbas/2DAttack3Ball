@@ -25,6 +25,7 @@ public enum GameEvent
 
     //GameEnd
     OnSuccess,
+    OnSuccessUI,
     OnUpdateRequirements,
 
 

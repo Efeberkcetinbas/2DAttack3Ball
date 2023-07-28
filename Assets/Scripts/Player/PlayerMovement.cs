@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnSuccess()
     {
-        transform.DOMove(Vector2.zero,0.1f);
+        transform.DOMove(Vector2.zero,0.75f);
         level = 0;
         currentRadius = _startRadius;
     }

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
         EventManager.AddHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
+        EventManager.AddHandler(GameEvent.OnSuccessUI,OnSuccessUI);
     }
 
     private void OnDisable()
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
         EventManager.RemoveHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
+        EventManager.RemoveHandler(GameEvent.OnSuccessUI,OnSuccessUI);
     }
     
     void OnGameOver()
@@ -99,6 +101,17 @@ public class GameManager : MonoBehaviour
     
     private void OnSuccess()
     {
+        EventManager.Broadcast(GameEvent.OnSuccessUI);
+    }
+
+    private void OnSuccessUI()
+    {
+        StartCoroutine(OpenSuccessPanel());
+    }
+
+    private IEnumerator OpenSuccessPanel()
+    {
+        yield return new WaitForSeconds(1);
         successPanel.SetActive(true);
     }
 

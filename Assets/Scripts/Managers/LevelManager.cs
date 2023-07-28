@@ -51,6 +51,11 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
+    private void ChangeBackground()
+    {
+        
+    }
+
     
     
 }
