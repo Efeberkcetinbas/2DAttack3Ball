@@ -24,12 +24,19 @@ public class CircleTrigger : Interactable
             player.UpdatePlayerNumberText();
             EventManager.Broadcast(GameEvent.OnMerge);
             EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            
+            
+
             GameObject cloneRockEffect=Instantiate(rockEffect,transform.position,Quaternion.identity);
             for (int i = 0; i < 2; i++)
             {
                 ParticleSystem.MainModule main=cloneRockEffect.transform.GetChild(i).GetComponent<ParticleSystem>().main;
                 main.startColor=color;
             }
+
+            //Carptigimiz gezegen ile ayni renkte yorunge
+            ParticleSystem.MainModule mainRing=player.RingParticle.main;
+            mainRing.startColor=color;
 
             Destroy(gameObject);
         }

@@ -11,6 +11,10 @@ public enum GameEvent
 
     //Touch
     OnFingerPress,
+    OnButtonClicked,
+    OnStartGame,
+
+
 
     //Merge
     OnMerge,

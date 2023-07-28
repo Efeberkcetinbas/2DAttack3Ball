@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Open/Close Game End")]
     [SerializeField] private GameObject[] openClose;
+    [SerializeField] private GameObject touchToStartText;
 
     [Header("Game Ending")]
     [SerializeField] private GameObject successPanel;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     private void Start() 
     {
         OnNextLevel();
+        UpdateUI();
     }
     
 
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
         EventManager.AddHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
         EventManager.AddHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
+        EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
     }
 
     private void OnDisable()
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
         EventManager.RemoveHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
         EventManager.RemoveHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
+        EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
     }
     
     void OnGameOver()
@@ -98,10 +102,16 @@ public class GameManager : MonoBehaviour
         successPanel.SetActive(true);
     }
 
+    private void OnStartGame()
+    {
+        touchToStartText.SetActive(false);
+    }
+
     private void OnNextLevel()
     {
-        gameData.isGameEnd=false;
+        //gameData.isGameEnd=false;
         OpenClose(openClose,false);
+        touchToStartText.SetActive(true);
     }
 
     private void OnUpdateRequirements()
@@ -116,7 +126,7 @@ public class GameManager : MonoBehaviour
     
     void ClearData()
     {
-        gameData.isGameEnd=false;
+        gameData.isGameEnd=true;
     }
 
     private void OnDead()

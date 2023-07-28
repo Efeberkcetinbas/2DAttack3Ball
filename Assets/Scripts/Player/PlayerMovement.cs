@@ -15,10 +15,14 @@ public class PlayerMovement : MonoBehaviour
 
     public GameData gameData;
 
+    [SerializeField] private ParticleSystem trailEffect;
+
+
 
     private void Awake()
     {
-        canClick = true;
+        //canClick = true;
+        canClick=false;
         level = 0;
         currentRadius = _startRadius;
     }
@@ -26,6 +30,17 @@ public class PlayerMovement : MonoBehaviour
     private void Start() 
     {
         dragDistance=Screen.height*15/100;
+    }
+
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
+        
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
     }
 
     private void Update()
@@ -38,16 +53,39 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    
+
+    
+
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private Transform _rotateTransform;
 
     private void FixedUpdate()
     {
-        transform.localPosition = Vector3.up * currentRadius;
-        float rotateValue = _rotateSpeed * Time.fixedDeltaTime * _startRadius / currentRadius;
-        _rotateTransform.Rotate(0, 0, rotateValue);
+        if(!gameData.isGameEnd)
+        {
+            transform.localPosition = Vector3.up * currentRadius;
+            float rotateValue = _rotateSpeed * Time.fixedDeltaTime * _startRadius / currentRadius;
+            _rotateTransform.Rotate(0, 0, rotateValue);
+        }
+        else
+        {
+            //trailEffect.Stop();
+        }
+        
     }
 
+    private void OnStartGame()
+    {
+        StartCoroutine(setTrueTouch());
+    }
+
+    private IEnumerator setTrueTouch()
+    {
+        yield return new WaitForSeconds(0.2f);
+        //trailEffect.Play();
+        canClick=true;
+    }
     
 
 

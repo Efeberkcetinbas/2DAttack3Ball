@@ -16,6 +16,8 @@ public class PlayerTrigger : MonoBehaviour
 
     public GameData gameData;
 
+    public ParticleSystem RingParticle;
+
 
     
 
