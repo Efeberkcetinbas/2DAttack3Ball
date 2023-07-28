@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14db6eb11dc14d4a9aadc380891c5fd, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  score: 74
+  score: 0
   increaseScore: 1
-  RequirementMergeNumber: 5
+  RequirementMergeNumber: 2
   LevelIndex: 0
-  isGameEnd: 0
+  isGameEnd: 1

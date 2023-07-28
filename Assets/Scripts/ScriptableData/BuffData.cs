@@ -7,5 +7,8 @@ using UnityEngine;
 public class BuffData : ScriptableObject 
 {
     public bool playerInvincible=true;
+    public bool playerIsDestroyer=true;
+
+    public int time=5;
     
 }

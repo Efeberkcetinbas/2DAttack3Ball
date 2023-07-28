@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
         
     }
 
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     private void Update()
@@ -58,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnSuccess()
     {
         transform.DOMove(Vector2.zero,0.75f);
+        level = 0;
+        currentRadius = _startRadius;
+    }
+
+    private void OnNextLevel()
+    {
         level = 0;
         currentRadius = _startRadius;
     }
@@ -104,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private List<float> _rotateRadius;
     private float currentRadius;
 
-    private int level;
+    [SerializeField] private int level;
 
 
     private IEnumerator ChangeRadius()

@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     public GameData gameData;
     public PlayerData playerData;
 
+    [SerializeField] private int backroundIndex;
+
     private void Start()
     {
         LoadLevel();
@@ -33,6 +35,7 @@ public class LevelManager : MonoBehaviour
         levels[levelIndex].SetActive(true);
         EventManager.Broadcast(GameEvent.OnUpdateRequirements);
         EventManager.Broadcast(GameEvent.OnUpdateLevelText);
+        ChangeBackground();
     }
 
     public void LoadNextLevel()
@@ -53,6 +56,24 @@ public class LevelManager : MonoBehaviour
 
     private void ChangeBackground()
     {
+        if(backroundIndex < backgrounds.Count-1)
+        {
+            if(gameData.LevelIndex % 2 == 0)
+            {
+                backroundIndex++;
+                for (int i = 0; i < backgrounds.Count; i++)
+                {
+                    backgrounds[i].SetActive(false);
+                }
+            }
+        }
+
+        else
+        {
+            backroundIndex=0;
+        }
+
+        backgrounds[backroundIndex].SetActive(true);
         
     }
 

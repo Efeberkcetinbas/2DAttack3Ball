@@ -13,6 +13,7 @@ public class PlayerTrigger : MonoBehaviour
     public ParticleSystem InvincibleBuffParticle;
     public GameObject ExplosionParticle;
     public ParticleSystem MergeParticle;
+    public ParticleSystem DestroyerBuffParticle;
 
     public GameData gameData;
 
@@ -26,6 +27,7 @@ public class PlayerTrigger : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
         EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.AddHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
 
         
     }
@@ -35,6 +37,7 @@ public class PlayerTrigger : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
         EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
     }
 
     internal void UpdatePlayerNumberText()
@@ -46,6 +49,11 @@ public class PlayerTrigger : MonoBehaviour
     private void OnNonInvincible()
     {
         InvincibleBuffParticle.Stop();
+    }
+
+    private void OnDestroyDeActive()
+    {
+        DestroyerBuffParticle.Stop();
     }
 
     private void OnMerge()

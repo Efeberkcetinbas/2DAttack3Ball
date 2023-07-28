@@ -22,6 +22,9 @@ public enum GameEvent
     //Buffs
     OnInvincible,
     OnNonInvincible,
+    OnDestroyerActive,
+    OnDestroyDeActive,
+    OnSawDestroy,
 
     //GameEnd
     OnSuccess,

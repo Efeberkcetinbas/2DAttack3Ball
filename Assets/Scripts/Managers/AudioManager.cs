@@ -5,7 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip GameLoop,BuffMusic;
-    public AudioClip GameOverSound,FingerTouchSound,MergeSound,DeadSound;
+    //Buff seslerini insan sesi kullan
+    public AudioClip GameOverSound,FingerTouchSound,MergeSound,DeadSound,SawExplosionSound,InvicibleBuffSound,DestroyerBuffSound,SuccessSound;
 
     AudioSource musicSource,effectSource;
 
@@ -26,6 +27,10 @@ public class AudioManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnFingerPress,OnFingerPress);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
         EventManager.AddHandler(GameEvent.OnDead,OnDead);
+        EventManager.AddHandler(GameEvent.OnSawDestroy,OnSawDestroy);
+        EventManager.AddHandler(GameEvent.OnInvincible,OnInvincible);
+        EventManager.AddHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
+        EventManager.AddHandler(GameEvent.OnSuccessUI,OnSuccessUI);
     }
     private void OnDisable() 
     {
@@ -33,6 +38,10 @@ public class AudioManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnFingerPress,OnFingerPress);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
         EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
+        EventManager.RemoveHandler(GameEvent.OnSawDestroy,OnSawDestroy);
+        EventManager.RemoveHandler(GameEvent.OnInvincible,OnInvincible);
+        EventManager.RemoveHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
+        EventManager.RemoveHandler(GameEvent.OnSuccessUI,OnSuccessUI);
     }
 
 
@@ -54,6 +63,26 @@ public class AudioManager : MonoBehaviour
     private void OnDead()
     {
         effectSource.PlayOneShot(DeadSound);
+    }
+
+    private void OnSawDestroy()
+    {
+        effectSource.PlayOneShot(SawExplosionSound);
+    }
+
+    private void OnInvincible()
+    {
+        effectSource.PlayOneShot(InvicibleBuffSound);
+    }
+
+    private void OnDestroyerActive()
+    {
+        effectSource.PlayOneShot(DestroyerBuffSound);
+    }
+
+    private void OnSuccessUI()
+    {
+        effectSource.PlayOneShot(SuccessSound);
     }
 
 }

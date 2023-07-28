@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnInvincible,OnInvincible);
         EventManager.AddHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.AddHandler(GameEvent.OnUpdateLevelText,OnUpdateLevelText);
+        EventManager.AddHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
+        EventManager.AddHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
     }
     private void OnDisable()
     {
@@ -27,6 +29,8 @@ public class UIManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnInvincible,OnInvincible);
         EventManager.RemoveHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.RemoveHandler(GameEvent.OnUpdateLevelText,OnUpdateLevelText);
+        EventManager.RemoveHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
+        EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
     }
 
     
@@ -43,7 +47,17 @@ public class UIManager : MonoBehaviour
 
     private void OnNonInvincible()
     {
-        SetBuffNon("INVINCIBLE BUFF NONACTIVE");
+        SetBuffNon("INVINCIBLE BUFF DENACTIVE");
+    }
+
+    private void OnDestroyerActive()
+    {
+        SetBuffText("DESTROYER BUFF ACTIVE");
+    }
+
+    private void OnDestroyDeActive()
+    {
+        SetBuffNon("DESTROY BUFF DEACTIVE");
     }
 
     private void OnUpdateLevelText()
