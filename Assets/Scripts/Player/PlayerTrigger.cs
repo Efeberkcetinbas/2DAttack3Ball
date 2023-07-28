@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 public class PlayerTrigger : MonoBehaviour
 {
     public int PlayerNumber;
@@ -43,5 +44,6 @@ public class PlayerTrigger : MonoBehaviour
     private void OnMerge()
     {
         MergeParticle.Play();
+        transform.DOScale(new Vector3(0.75f,0.75f,0.75f),0.1f).OnComplete(()=>transform.DOScale(new Vector3(0.5f,0.5f,0.5f),0.1f));
     }
 }

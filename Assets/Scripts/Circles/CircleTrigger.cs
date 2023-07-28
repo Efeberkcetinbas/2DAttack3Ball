@@ -6,6 +6,10 @@ public class CircleTrigger : Interactable
 {
     private CircleProperties circleProperties;
 
+    [SerializeField] private GameObject rockEffect;
+
+    [SerializeField] private Color color;
+
     private void Start() 
     {
         circleProperties=GetComponent<CircleProperties>();
@@ -19,6 +23,14 @@ public class CircleTrigger : Interactable
             player.PlayerNumber+=1;
             player.UpdatePlayerNumberText();
             EventManager.Broadcast(GameEvent.OnMerge);
+            EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            GameObject cloneRockEffect=Instantiate(rockEffect,transform.position,Quaternion.identity);
+            for (int i = 0; i < 2; i++)
+            {
+                ParticleSystem.MainModule main=cloneRockEffect.transform.GetChild(i).GetComponent<ParticleSystem>().main;
+                main.startColor=color;
+            }
+
             Destroy(gameObject);
         }
 

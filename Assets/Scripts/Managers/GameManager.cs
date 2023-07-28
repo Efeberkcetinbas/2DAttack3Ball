@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject FailPanel;
     [SerializeField] private Ease ease;
 
+    [Header("Open/Close Game End")]
+    [SerializeField] private GameObject[] openClose;
 
-    public List<GameObject> LinesCol=new List<GameObject>(); 
+
 
     private void Awake() 
     {
@@ -42,15 +44,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void LineOpenControl(int selected)
-    {
-        for (int i = 0; i < LinesCol.Count; i++)
-        {
-            LinesCol[i].SetActive(false);
-        }
-
-        LinesCol[selected].SetActive(true);
-    }
+    
 
     
 
@@ -75,6 +69,13 @@ public class GameManager : MonoBehaviour
         EventManager.Broadcast(GameEvent.OnUIUpdate);
     }
 
+    private void OpenClose(GameObject[] gameObjects,bool canOpen)
+    {
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i].SetActive(canOpen);
+        }
+    }
     
 
     

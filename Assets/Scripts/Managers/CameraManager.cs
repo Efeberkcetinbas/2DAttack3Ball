@@ -47,7 +47,7 @@ public class CameraManager : MonoBehaviour
 
     private void OnMerge()
     {
-        Noise(1,1,0.3f);
+        Noise(3,3,0.3f);
         ChangeFieldOfViewHit(9,10,0.1f);
     }
 

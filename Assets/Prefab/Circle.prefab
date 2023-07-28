@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberText: {fileID: 1542486252247297380}
-  Number: 8
+  Number: 2
 --- !u!114 &1401742531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e44f321dd6e6f64c92d7903d6d7e6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockEffect: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1542486251973048711
 GameObject:
   m_ObjectHideFlags: 0
