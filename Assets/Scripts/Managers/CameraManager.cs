@@ -55,6 +55,13 @@ public class CameraManager : MonoBehaviour
     {
         Noise(3,3,2);
         ChangeFieldOfView(8,0.3f);
+        StartCoroutine(CallEndingScreen(2));
+    }
+
+    private IEnumerator CallEndingScreen(float time)
+    {
+        yield return new WaitForSeconds(time);
+        EventManager.Broadcast(GameEvent.OnGameOver);
     }
 
     private void Noise(float amplitudeGain,float frequencyGain,float shakeTime) 

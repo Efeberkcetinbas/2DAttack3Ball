@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 45
   _rotateTransform: {fileID: 1542486251973048728}
+  gameData: {fileID: 11400000, guid: 4d605d83d0b9db9458dadc7f037e3aec, type: 2}
 --- !u!114 &1401742530
 MonoBehaviour:
   m_ObjectHideFlags: 0

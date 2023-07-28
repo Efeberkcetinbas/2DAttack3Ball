@@ -14,6 +14,8 @@ public class PlayerTrigger : MonoBehaviour
     public GameObject ExplosionParticle;
     public ParticleSystem MergeParticle;
 
+    public GameData gameData;
+
 
     
 
@@ -45,5 +47,23 @@ public class PlayerTrigger : MonoBehaviour
     {
         MergeParticle.Play();
         transform.DOScale(new Vector3(0.75f,0.75f,0.75f),0.1f).OnComplete(()=>transform.DOScale(new Vector3(0.5f,0.5f,0.5f),0.1f));
+        CheckRequirementMergeNumber();
+    }
+
+    private void OnNextLevel()
+    {
+        PlayerNumber=1;
+        UpdatePlayerNumberText();
+    }
+
+    //Burada requirementi kontrol edebiliriz
+    private void CheckRequirementMergeNumber()
+    {
+        if(gameData.RequirementMergeNumber==PlayerNumber)
+        {
+            gameData.isGameEnd=true;
+            EventManager.Broadcast(GameEvent.OnSuccess);
+            Debug.Log("SUCCESS EVENT");
+        }
     }
 }

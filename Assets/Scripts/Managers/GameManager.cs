@@ -14,11 +14,16 @@ public class GameManager : MonoBehaviour
     [Header("Open/Close Game End")]
     [SerializeField] private GameObject[] openClose;
 
+    [Header("Game Ending")]
+    [SerializeField] private GameObject successPanel;
+    [SerializeField] private GameObject failPanel;
+
 
 
     private void Awake() 
     {
         ClearData();
+        OnNextLevel();
     }
 
     
@@ -27,12 +32,16 @@ public class GameManager : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.AddHandler(GameEvent.OnDead,OnDead);
+        EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.AddHandler(GameEvent.OnUIGameOver,OnUIGameOver);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
+        EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
+        EventManager.RemoveHandler(GameEvent.OnUIGameOver,OnUIGameOver);
     }
     
     void OnGameOver()
@@ -77,7 +86,20 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    private void OnSuccess()
+    {
+        successPanel.SetActive(true);
+    }
 
+    private void OnNextLevel()
+    {
+        gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber;
+    }
+
+    private void OnUIGameOver()
+    {
+        failPanel.SetActive(true);
+    }
     
     void ClearData()
     {

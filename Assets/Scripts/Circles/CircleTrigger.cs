@@ -36,12 +36,15 @@ public class CircleTrigger : Interactable
 
         else if(player.PlayerNumber>circleProperties.Number)
         {
+            EventManager.Broadcast(GameEvent.OnIncreaseScore);
+            GameObject cloneRockEffect=Instantiate(rockEffect,transform.position,Quaternion.identity);
+            for (int i = 0; i < 2; i++)
+            {
+                ParticleSystem.MainModule main=cloneRockEffect.transform.GetChild(i).GetComponent<ParticleSystem>().main;
+                main.startColor=color;
+            }
             Destroy(gameObject);
         }
-
-        else
-        {
-            Debug.Log("GAME END");
-        }
+        
     }
 }

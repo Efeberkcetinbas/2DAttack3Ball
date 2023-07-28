@@ -19,6 +19,9 @@ public enum GameEvent
     OnInvincible,
     OnNonInvincible,
 
+    //GameEnd
+    OnSuccess,
+
 
     //Game Management
     OnIncreaseScore,

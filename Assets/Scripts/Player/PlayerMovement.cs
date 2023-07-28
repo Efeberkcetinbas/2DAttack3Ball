@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private float dragDistance;
     private bool canClick;
 
-    private int increaseAmount;
 
     public GameData gameData;
 
@@ -80,55 +79,4 @@ public class PlayerMovement : MonoBehaviour
         level = (level + 1) % _rotateRadius.Count;
         currentRadius = _rotateRadius[level];
     }
-
-    private void CheckMove()
-    {
-
-        if(Input.touchCount>0)
-        {
-            Touch touch=Input.GetTouch(0);
-            if(touch.phase==TouchPhase.Began)
-            {
-                firstPosition=touch.position;
-                lastPosition=touch.position;
-            }
-
-            else if(touch.phase==TouchPhase.Moved)
-            {
-                lastPosition=touch.position;
-            }
-
-            else if(touch.phase==TouchPhase.Ended)
-            {
-                lastPosition=touch.position;
-
-                if(Mathf.Abs(lastPosition.x-firstPosition.x)>Mathf.Abs(lastPosition.y-firstPosition.y))
-                {
-                    if(lastPosition.x>firstPosition.x)
-                    {
-                        //right
-                    }
-                    else
-                    {
-                        //left
-                    }
-                }
-
-                else
-                {
-                    if(lastPosition.y>firstPosition.y)
-                    {
-                        //up
-                        increaseAmount=1;
-                    }
-                    else
-                    {
-                        increaseAmount=-1;
-                        //down
-                    }
-                }
-            }
-        }
-    }
-
 }
