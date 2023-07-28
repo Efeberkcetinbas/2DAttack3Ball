@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject 
 {
     public bool playerCanMove=true;
+    public bool canClick=false;
 
     //Incrementals
     public float backToMainPlayerTime=2;

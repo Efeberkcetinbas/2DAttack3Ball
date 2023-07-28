@@ -10,19 +10,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastPosition;
 
     private float dragDistance;
-    private bool canClick;
+    //private bool canClick;
 
 
     public GameData gameData;
+    public PlayerData playerData;
 
-    [SerializeField] private ParticleSystem trailEffect;
 
 
 
     private void Awake()
     {
-        //canClick = true;
-        canClick=false;
+        playerData.canClick=false;
+        //canClick=false;
         level = 0;
         currentRadius = _startRadius;
     }
@@ -35,22 +35,31 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable() 
     {
         EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
+        EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
         
     }
 
     private void OnDisable() 
     {
         EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
+        EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
     }
 
     private void Update()
     {
-        if(!gameData.isGameEnd && canClick && Input.GetMouseButtonDown(0))
+        if(!gameData.isGameEnd && playerData.canClick && Input.GetMouseButtonDown(0))
         {
             //CheckMove();
             StartCoroutine(ChangeRadius());
             EventManager.Broadcast(GameEvent.OnFingerPress);
         }
+    }
+
+    private void OnSuccess()
+    {
+        transform.DOMove(Vector2.zero,0.1f);
+        level = 0;
+        currentRadius = _startRadius;
     }
 
     
@@ -84,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         //trailEffect.Play();
-        canClick=true;
+        playerData.canClick=true;
     }
     
 
@@ -100,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator ChangeRadius()
     {
-        canClick = false;
+        playerData.canClick = false;
         float moveStartRadius = _rotateRadius[level];
         float moveEndRadius = _rotateRadius[(level + 1) % _rotateRadius.Count];
         float moveOffset = moveEndRadius - moveStartRadius;
@@ -113,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        canClick = true;
+        playerData.canClick = true;
         level = (level + 1) % _rotateRadius.Count;
         currentRadius = _rotateRadius[level];
     }

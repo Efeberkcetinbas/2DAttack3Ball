@@ -35,6 +35,7 @@ public class CircleTrigger : Interactable
             }
 
             //Carptigimiz gezegen ile ayni renkte yorunge
+            //Burayi duzeltmeye calis. Bir oncekini aliyor
             ParticleSystem.MainModule mainRing=player.RingParticle.main;
             mainRing.startColor=color;
 

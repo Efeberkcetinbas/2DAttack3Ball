@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public int levelIndex;
     
     public List<GameObject> levels;
+    public List<GameObject> backgrounds;
+
+    public GameData gameData;
+    public PlayerData playerData;
 
     private void Start()
     {
@@ -28,6 +32,7 @@ public class LevelManager : MonoBehaviour
         }
         levels[levelIndex].SetActive(true);
         EventManager.Broadcast(GameEvent.OnUpdateRequirements);
+        EventManager.Broadcast(GameEvent.OnUpdateLevelText);
     }
 
     public void LoadNextLevel()
@@ -35,6 +40,9 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("LevelNumber", levelIndex + 1);
         PlayerPrefs.SetInt("RealLevel", PlayerPrefs.GetInt("RealLevel", 0) + 1);
         EventManager.Broadcast(GameEvent.OnNextLevel);
+        gameData.LevelIndex=PlayerPrefs.GetInt("RealLevel");
+        playerData.canClick=false;
+        //EventManager.Broadcast(GameEvent.OnStartGame);
         LoadLevel();
     }
 

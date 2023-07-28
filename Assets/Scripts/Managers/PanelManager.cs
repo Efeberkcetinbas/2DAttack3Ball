@@ -33,7 +33,7 @@ public class PanelManager : MonoBehaviour
         if(oneTime)
         {
             //&& Input.GetTouch(0).position.y>Screen.height/2f
-            if(Input.touchCount>=1)
+            if(Input.touchCount>=1 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 EventManager.Broadcast(GameEvent.OnStartGame);
                 gameData.isGameEnd=false;   
