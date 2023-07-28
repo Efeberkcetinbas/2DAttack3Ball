@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
             levels[i].SetActive(false);
         }
         levels[levelIndex].SetActive(true);
+        EventManager.Broadcast(GameEvent.OnUpdateRequirements);
     }
 
     public void LoadNextLevel()

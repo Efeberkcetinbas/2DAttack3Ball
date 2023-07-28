@@ -23,25 +23,32 @@ public class GameManager : MonoBehaviour
     private void Awake() 
     {
         ClearData();
-        OnNextLevel();
     }
 
+    private void Start() 
+    {
+        OnNextLevel();
+    }
     
 
     private void OnEnable()
     {
-        EventManager.AddHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.AddHandler(GameEvent.OnDead,OnDead);
         EventManager.AddHandler(GameEvent.OnSuccess,OnSuccess);
         EventManager.AddHandler(GameEvent.OnUIGameOver,OnUIGameOver);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.AddHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
+        EventManager.AddHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
     }
 
     private void OnDisable()
     {
-        EventManager.RemoveHandler(GameEvent.OnIncreaseScore, OnIncreaseScore);
         EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
         EventManager.RemoveHandler(GameEvent.OnSuccess,OnSuccess);
         EventManager.RemoveHandler(GameEvent.OnUIGameOver,OnUIGameOver);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
+        EventManager.RemoveHandler(GameEvent.OnIncreaseScore,OnIncreaseScore);
+        EventManager.RemoveHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
     }
     
     void OnGameOver()
@@ -92,6 +99,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnNextLevel()
+    {
+        gameData.isGameEnd=false;
+        OpenClose(openClose,false);
+    }
+
+    private void OnUpdateRequirements()
     {
         gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber;
     }

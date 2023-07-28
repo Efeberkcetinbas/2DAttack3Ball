@@ -31,6 +31,7 @@ public class CameraManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnGameOver,GameOver);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
         EventManager.AddHandler(GameEvent.OnDead,OnDead);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     private void OnDisable()
@@ -38,11 +39,12 @@ public class CameraManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnGameOver,GameOver);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
         EventManager.RemoveHandler(GameEvent.OnDead,OnDead);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     private void OnNextLevel()
     {
-        ChangeFieldOfView(5,0.1f);
+        ChangeFieldOfView(10,0.1f);
     }
 
     private void OnMerge()

@@ -23,6 +23,8 @@ public class PlayerTrigger : MonoBehaviour
     {
         EventManager.AddHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
+
         
     }
 
@@ -30,6 +32,7 @@ public class PlayerTrigger : MonoBehaviour
     {
         EventManager.RemoveHandler(GameEvent.OnNonInvincible,OnNonInvincible);
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
 
     internal void UpdatePlayerNumberText()
