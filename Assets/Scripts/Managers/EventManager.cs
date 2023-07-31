@@ -22,6 +22,8 @@ public enum GameEvent
     OnUpdateCircleLevels,
     OnUpdatePlayerLevel,
     OnUpdateRequirementMoney,
+    OnUpdateEarningMoney,
+    OnUpdatePower,
 
     //Buffs
     OnInvincible,

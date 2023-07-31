@@ -79,7 +79,7 @@ public class PlayerTrigger : MonoBehaviour
     //Burada requirementi kontrol edebiliriz
     private void CheckRequirementMergeNumber()
     {
-        if(gameData.RequirementMergeNumber==PlayerNumber)
+        if(gameData.RequirementMergeNumber==PlayerNumber+gameData.powerLevel)
         {
             gameData.isGameEnd=true;
             EventManager.Broadcast(GameEvent.OnSuccess);

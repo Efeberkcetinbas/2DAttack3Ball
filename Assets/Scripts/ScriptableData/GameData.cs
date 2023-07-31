@@ -15,6 +15,7 @@ public class GameData : ScriptableObject
 
     //Incrementals
     public int RequirementCoin;
+    public int RequirementEarningCoin;
 
     public bool isGameEnd=false;
 }

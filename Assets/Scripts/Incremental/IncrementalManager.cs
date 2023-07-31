@@ -7,21 +7,25 @@ public class IncrementalManager : MonoBehaviour
     public GameData gameData;
 
     [SerializeField] private Button powerButton;
+    
+    [SerializeField] private Button earningButton;
 
     private void Start() 
     {
         EventManager.Broadcast(GameEvent.OnUpdateRequirementMoney);
-        CheckInteractable();
+        EventManager.Broadcast(GameEvent.OnUpdateEarningMoney);
+        CheckInteractableEarning();
+        CheckInteractablePower();
     }
 
     private void OnEnable() 
     {
-        EventManager.AddHandler(GameEvent.OnNextLevel,CheckInteractable);
+        EventManager.AddHandler(GameEvent.OnNextLevel,CheckInteractablePower);
     }
 
     private void OnDisable()
     {
-        EventManager.RemoveHandler(GameEvent.OnNextLevel,CheckInteractable);
+        EventManager.RemoveHandler(GameEvent.OnNextLevel,CheckInteractablePower);
     }
     public void GainPower()
     {
@@ -33,15 +37,27 @@ public class IncrementalManager : MonoBehaviour
             EventManager.Broadcast(GameEvent.OnUpdatePlayerLevel);    
             gameData.score=gameData.score-gameData.RequirementCoin;
             EventManager.Broadcast(GameEvent.OnUIUpdate);
-            EventManager.Broadcast(GameEvent.OnUpdateRequirementMoney);
             UpdateRequirementMoneyForPower();
-            CheckInteractable();
+            CheckInteractablePower();
+            CheckInteractableEarning();
             return;
         }
-        
     }
 
-    private void CheckInteractable()
+    public void EarningMoney()
+    {
+        if(gameData.score>=gameData.RequirementEarningCoin)
+        {
+            gameData.increaseScore++;
+            gameData.score=gameData.score-gameData.RequirementEarningCoin;
+            EventManager.Broadcast(GameEvent.OnUIUpdate);
+            UpdateRequirementFromEarning();
+            CheckInteractableEarning();
+            CheckInteractablePower();
+        }
+    }
+
+    private void CheckInteractablePower()
     {
         if(gameData.score>=gameData.RequirementCoin)
         {
@@ -52,10 +68,28 @@ public class IncrementalManager : MonoBehaviour
             powerButton.interactable=false;
         }
     }
+    private void CheckInteractableEarning()
+    {
+        if(gameData.score>=gameData.RequirementEarningCoin)
+        {
+            earningButton.interactable=true;
+        }
+        else
+        {
+            earningButton.interactable=false;
+        }
+    }
 
 
     private void UpdateRequirementMoneyForPower()
     {
         gameData.RequirementCoin*=2;
+        EventManager.Broadcast(GameEvent.OnUpdateRequirementMoney);
+    }
+
+    private void UpdateRequirementFromEarning()
+    {
+        gameData.RequirementEarningCoin*=2;
+        EventManager.Broadcast(GameEvent.OnUpdateEarningMoney);
     }
 }

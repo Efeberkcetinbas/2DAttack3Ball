@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   score: 25
-  increaseScore: 1
-  RequirementMergeNumber: 14
+  increaseScore: 3
+  RequirementMergeNumber: 7
   LevelIndex: 5
   powerLevel: 0
   RequirementCoin: 10
+  RequirementEarningCoin: 20
   isGameEnd: 1

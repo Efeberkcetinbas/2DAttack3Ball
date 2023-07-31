@@ -13,7 +13,7 @@ public class PanelManager : MonoBehaviour
 
     [SerializeField] private float StartX,StartY,CharacterX,CharacterY,WeaponX,WeaponY,duration;
 
-    [SerializeField] private GameObject incrementalButton;
+    [SerializeField] private GameObject incrementalButton,earningButton;
 
     public GameData gameData;
 
@@ -42,6 +42,7 @@ public class PanelManager : MonoBehaviour
                 StartPanel.gameObject.SetActive(false);
                 oneTime=false;
                 incrementalButton.SetActive(false);
+                earningButton.SetActive(false);
             }
         }*/
     }
@@ -66,6 +67,7 @@ public class PanelManager : MonoBehaviour
         image.DOFade(0,1f);
         yield return new WaitForSeconds(1f);
         incrementalButton.SetActive(true);
+        earningButton.SetActive(true);
         gameObject.SetActive(false);
         oneTime=true;
 

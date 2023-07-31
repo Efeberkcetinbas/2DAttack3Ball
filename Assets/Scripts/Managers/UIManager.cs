@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public PlayerData playerData;
     [Header("Incrementals")]
     [SerializeField] private TextMeshProUGUI AmountText;
+    [SerializeField] private TextMeshProUGUI NeedEarningText;
     [Header("Game End UI")]
     [SerializeField] private List<Image> stars=new List<Image>();
 
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
         EventManager.AddHandler(GameEvent.OnFillStars,OnFillStars);
         EventManager.AddHandler(GameEvent.OnUpdateRequirementMoney,OnUpdateRequirementMoney);
+        EventManager.AddHandler(GameEvent.OnUpdateEarningMoney,OnUpdateEarningMoney);
     }
     private void OnDisable()
     {
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
         EventManager.RemoveHandler(GameEvent.OnFillStars,OnFillStars);
         EventManager.RemoveHandler(GameEvent.OnUpdateRequirementMoney,OnUpdateRequirementMoney);
+        EventManager.RemoveHandler(GameEvent.OnUpdateEarningMoney,OnUpdateEarningMoney);
     }
 
     
@@ -52,6 +55,11 @@ public class UIManager : MonoBehaviour
     private void OnUpdateRequirementMoney()
     {
         AmountText.SetText(gameData.RequirementCoin.ToString());
+    }
+
+    private void OnUpdateEarningMoney()
+    {
+        NeedEarningText.SetText(gameData.RequirementEarningCoin.ToString());
     }
 
     private void OnInvincible()

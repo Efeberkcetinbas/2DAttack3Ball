@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.AddHandler(GameEvent.OnSuccessUI,OnSuccessUI);
+        EventManager.AddHandler(GameEvent.OnUpdatePower,OnUpdateRequirements);
     }
 
     private void OnDisable()
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.RemoveHandler(GameEvent.OnSuccessUI,OnSuccessUI);
+        EventManager.RemoveHandler(GameEvent.OnUpdatePower,OnUpdateRequirements);
     }
     
     void OnGameOver()
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber+gameData.powerLevel;
     }
+
 
     private void OnUIGameOver()
     {
