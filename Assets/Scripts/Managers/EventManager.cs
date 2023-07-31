@@ -38,6 +38,7 @@ public enum GameEvent
     OnUIGameOver,
     OnNextLevel,
     OnUpdateLevelText,
+    OnFillStars,
     OnGameOver
 }
 public class EventManager

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     public GameData gameData;
     public PlayerData playerData;
+    [Header("Game End UI")]
+    [SerializeField] private List<Image> stars=new List<Image>();
 
     [Header("Buff Texts")]
     public TextMeshProUGUI BuffText; 
@@ -22,6 +25,7 @@ public class UIManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnUpdateLevelText,OnUpdateLevelText);
         EventManager.AddHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
         EventManager.AddHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
+        EventManager.AddHandler(GameEvent.OnFillStars,OnFillStars);
     }
     private void OnDisable()
     {
@@ -31,6 +35,7 @@ public class UIManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnUpdateLevelText,OnUpdateLevelText);
         EventManager.RemoveHandler(GameEvent.OnDestroyerActive,OnDestroyerActive);
         EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
+        EventManager.RemoveHandler(GameEvent.OnFillStars,OnFillStars);
     }
 
     
@@ -63,6 +68,26 @@ public class UIManager : MonoBehaviour
     private void OnUpdateLevelText()
     {
         levelText.SetText("Level " + (gameData.LevelIndex+1).ToString());
+    }
+
+    private void OnFillStars()
+    {
+        StartCoroutine(FillStar());
+    }
+    
+    private IEnumerator FillStar()
+    {
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].fillAmount=0;
+        }
+
+        yield return new WaitForSeconds(1);
+
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].DOFillAmount(1,0.5f);
+        }
     }
 
 

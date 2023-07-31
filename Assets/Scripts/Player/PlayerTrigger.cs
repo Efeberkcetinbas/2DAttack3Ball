@@ -40,6 +40,11 @@ public class PlayerTrigger : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
     }
 
+    private void Start() 
+    {
+        UpdatePlayerNumberText();
+    }
+
     internal void UpdatePlayerNumberText()
     {
         PlayerNumberText.SetText(PlayerNumber.ToString());

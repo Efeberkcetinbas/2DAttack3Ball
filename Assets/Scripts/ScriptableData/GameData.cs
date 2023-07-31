@@ -11,6 +11,7 @@ public class GameData : ScriptableObject
     public int increaseScore;
     public int RequirementMergeNumber;
     public int LevelIndex;
+    public int powerLevel;
 
     public bool isGameEnd=false;
 }

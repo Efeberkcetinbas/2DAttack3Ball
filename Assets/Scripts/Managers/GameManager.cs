@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Ending")]
     [SerializeField] private GameObject successPanel;
+    [SerializeField] private List<GameObject> stars=new List<GameObject>();
     [SerializeField] private GameObject failPanel;
 
 
@@ -113,6 +114,18 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         successPanel.SetActive(true);
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].transform.localScale=Vector3.zero;
+        }
+        
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].SetActive(true);
+            stars[i].transform.DOScale(Vector3.one,0.2f);
+        }
+        EventManager.Broadcast(GameEvent.OnFillStars);
+        
     }
 
     private void OnStartGame()
