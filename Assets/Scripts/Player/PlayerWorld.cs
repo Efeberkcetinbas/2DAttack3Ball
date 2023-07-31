@@ -7,6 +7,8 @@ public class PlayerWorld : MonoBehaviour
     private PlayerTrigger playerTrigger;
 
     private SpriteRenderer spriteRenderer;
+
+    public GameData gameData;
     [SerializeField] private List<Sprite> worlds=new List<Sprite>();
 
     private void Start() 
@@ -27,6 +29,6 @@ public class PlayerWorld : MonoBehaviour
 
     private void OnUpdateWorld()
     {
-        spriteRenderer.sprite=worlds[playerTrigger.PlayerNumber];
+        spriteRenderer.sprite=worlds[playerTrigger.PlayerNumber+gameData.powerLevel];
     }
 }

@@ -28,6 +28,7 @@ public class PlayerTrigger : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnMerge,OnMerge);
         EventManager.AddHandler(GameEvent.OnNextLevel,OnNextLevel);
         EventManager.AddHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
+        EventManager.AddHandler(GameEvent.OnUpdatePlayerLevel,UpdatePlayerNumberText);
 
         
     }
@@ -38,6 +39,7 @@ public class PlayerTrigger : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnMerge,OnMerge);
         EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
         EventManager.RemoveHandler(GameEvent.OnDestroyDeActive,OnDestroyDeActive);
+        EventManager.RemoveHandler(GameEvent.OnUpdatePlayerLevel,UpdatePlayerNumberText);
     }
 
     private void Start() 
@@ -47,7 +49,7 @@ public class PlayerTrigger : MonoBehaviour
 
     internal void UpdatePlayerNumberText()
     {
-        PlayerNumberText.SetText(PlayerNumber.ToString());
+        PlayerNumberText.SetText((PlayerNumber+gameData.powerLevel).ToString());
         EventManager.Broadcast(GameEvent.OnUpdateWorld);
     }
 

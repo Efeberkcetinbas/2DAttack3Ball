@@ -8,6 +8,8 @@ public class CircleProperties : MonoBehaviour
 
     public int Number;
 
+    private int firstNumber;
+
     public List<Sprite> sprites=new List<Sprite>();
     public List<Color> colors=new List<Color>();
     public Color selectedColor;
@@ -20,12 +22,23 @@ public class CircleProperties : MonoBehaviour
         OnUpdateCircleLevels();
     }
 
+    private void OnEnable() 
+    {
+        EventManager.AddHandler(GameEvent.OnUpdateCircleLevels,OnUpdateCircleLevels);
+    }
+
+    private void OnDisable() 
+    {
+        EventManager.RemoveHandler(GameEvent.OnUpdateCircleLevels,OnUpdateCircleLevels);
+    }
+
     private void OnUpdateCircleLevels()
     {
-        Number+=gameData.powerLevel;
-        selectedColor=colors[Number];
+        
+        //Number+=gameData.powerLevel;
+        selectedColor=colors[Number+gameData.powerLevel];
         spriteRenderer=GetComponent<SpriteRenderer>();
-        NumberText.SetText(Number.ToString());
-        spriteRenderer.sprite=sprites[Number];
+        NumberText.SetText((Number+gameData.powerLevel).ToString());
+        spriteRenderer.sprite=sprites[Number+gameData.powerLevel];
     }
 }

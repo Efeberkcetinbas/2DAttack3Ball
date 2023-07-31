@@ -13,6 +13,8 @@ public class PanelManager : MonoBehaviour
 
     [SerializeField] private float StartX,StartY,CharacterX,CharacterY,WeaponX,WeaponY,duration;
 
+    [SerializeField] private GameObject incrementalButton;
+
     public GameData gameData;
 
     private bool oneTime=true;
@@ -30,7 +32,7 @@ public class PanelManager : MonoBehaviour
     
     private void Update() 
     {
-        if(oneTime)
+        /*if(oneTime)
         {
             //&& Input.GetTouch(0).position.y>Screen.height/2f
             if(Input.touchCount>=1 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -39,8 +41,9 @@ public class PanelManager : MonoBehaviour
                 gameData.isGameEnd=false;   
                 StartPanel.gameObject.SetActive(false);
                 oneTime=false;
+                incrementalButton.SetActive(false);
             }
-        }
+        }*/
     }
     
 
@@ -62,6 +65,7 @@ public class PanelManager : MonoBehaviour
         //0.2f
         image.DOFade(0,1f);
         yield return new WaitForSeconds(1f);
+        incrementalButton.SetActive(true);
         gameObject.SetActive(false);
         oneTime=true;
 

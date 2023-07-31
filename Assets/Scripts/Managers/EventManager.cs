@@ -20,6 +20,8 @@ public enum GameEvent
     OnMerge,
     //Incrementalden guncelledigimizde diger circlelarin da guncellesmesi icin
     OnUpdateCircleLevels,
+    OnUpdatePlayerLevel,
+    OnUpdateRequirementMoney,
 
     //Buffs
     OnInvincible,

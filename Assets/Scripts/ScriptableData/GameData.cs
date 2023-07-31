@@ -13,5 +13,8 @@ public class GameData : ScriptableObject
     public int LevelIndex;
     public int powerLevel;
 
+    //Incrementals
+    public int RequirementCoin;
+
     public bool isGameEnd=false;
 }
