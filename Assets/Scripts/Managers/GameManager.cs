@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     private void OnUpdateRequirements()
     {
-        gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber;
+        gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber+gameData.powerLevel;
     }
 
     private void OnUIGameOver()

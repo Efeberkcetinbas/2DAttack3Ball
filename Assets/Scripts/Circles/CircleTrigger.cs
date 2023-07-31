@@ -8,7 +8,7 @@ public class CircleTrigger : Interactable
 
     [SerializeField] private GameObject rockEffect;
 
-    [SerializeField] private Color color;
+    //[SerializeField] private Color color;
 
     private void Start() 
     {
@@ -31,13 +31,13 @@ public class CircleTrigger : Interactable
             for (int i = 0; i < 2; i++)
             {
                 ParticleSystem.MainModule main=cloneRockEffect.transform.GetChild(i).GetComponent<ParticleSystem>().main;
-                main.startColor=color;
+                main.startColor=circleProperties.selectedColor;
             }
 
             //Carptigimiz gezegen ile ayni renkte yorunge
             //Burayi duzeltmeye calis. Bir oncekini aliyor
             ParticleSystem.MainModule mainRing=player.RingParticle.main;
-            mainRing.startColor=color;
+            mainRing.startColor=circleProperties.selectedColor;
 
             Destroy(gameObject);
         }
@@ -49,7 +49,7 @@ public class CircleTrigger : Interactable
             for (int i = 0; i < 2; i++)
             {
                 ParticleSystem.MainModule main=cloneRockEffect.transform.GetChild(i).GetComponent<ParticleSystem>().main;
-                main.startColor=color;
+                main.startColor=circleProperties.selectedColor;
             }
             Destroy(gameObject);
         }

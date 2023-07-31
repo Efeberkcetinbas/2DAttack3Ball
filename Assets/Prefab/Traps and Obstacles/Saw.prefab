@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData: {fileID: 11400000, guid: 217d550d236062c46acee55b3fdfe6c0, type: 2}
   gameData: {fileID: 11400000, guid: 4d605d83d0b9db9458dadc7f037e3aec, type: 2}
+  SawExplosion: {fileID: 1965343156803978, guid: 9a2cb69540c8de34db7512ad3dd2b5f4, type: 3}
 --- !u!1 &296496904735293483
 GameObject:
   m_ObjectHideFlags: 0

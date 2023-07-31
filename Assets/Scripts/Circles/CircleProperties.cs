@@ -9,17 +9,23 @@ public class CircleProperties : MonoBehaviour
     public int Number;
 
     public List<Sprite> sprites=new List<Sprite>();
+    public List<Color> colors=new List<Color>();
+    public Color selectedColor;
 
     private SpriteRenderer spriteRenderer;
 
     public GameData gameData;
     private void Start() 
     {
-        //Oyun Basi merge mekanigi olacaksa ayri gelistirme icin seviyemiz kadar arttirabilirz
+        OnUpdateCircleLevels();
+    }
+
+    private void OnUpdateCircleLevels()
+    {
         Number+=gameData.powerLevel;
+        selectedColor=colors[Number];
         spriteRenderer=GetComponent<SpriteRenderer>();
         NumberText.SetText(Number.ToString());
         spriteRenderer.sprite=sprites[Number];
-        
     }
 }
