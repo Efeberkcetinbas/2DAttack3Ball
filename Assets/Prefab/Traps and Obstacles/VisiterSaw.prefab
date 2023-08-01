@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -8003346854188952629, guid: 8cdd847ab4f914d4cb3d23e9eb98958d, type: 3}
   m_Color: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
   m_FlipX: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData: {fileID: 11400000, guid: 217d550d236062c46acee55b3fdfe6c0, type: 2}
   gameData: {fileID: 11400000, guid: 4d605d83d0b9db9458dadc7f037e3aec, type: 2}
+  SawExplosion: {fileID: 0}
 --- !u!114 &7096372167775878551
 MonoBehaviour:
   m_ObjectHideFlags: 0

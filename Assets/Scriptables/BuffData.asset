@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: BuffData
   m_EditorClassIdentifier: 
   playerInvincible: 0
+  playerIsDestroyer: 0
+  time: 10

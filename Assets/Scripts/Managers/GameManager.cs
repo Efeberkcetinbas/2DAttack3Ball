@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameData gameData;
     public PlayerData playerData;
+    public BuffData buffData;
 
     [SerializeField] private GameObject FailPanel;
     [SerializeField] private Ease ease;
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.AddHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.AddHandler(GameEvent.OnSuccessUI,OnSuccessUI);
-        EventManager.AddHandler(GameEvent.OnUpdatePower,OnUpdateRequirements);
+        EventManager.AddHandler(GameEvent.OnUpdatePower,OnUpdatePower);
     }
 
     private void OnDisable()
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnUpdateRequirements,OnUpdateRequirements);
         EventManager.RemoveHandler(GameEvent.OnStartGame,OnStartGame);
         EventManager.RemoveHandler(GameEvent.OnSuccessUI,OnSuccessUI);
-        EventManager.RemoveHandler(GameEvent.OnUpdatePower,OnUpdateRequirements);
+        EventManager.RemoveHandler(GameEvent.OnUpdatePower,OnUpdatePower);
     }
     
     void OnGameOver()
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator OpenSuccessPanel()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         successPanel.SetActive(true);
         for (int i = 0; i < stars.Count; i++)
         {
@@ -147,6 +148,11 @@ public class GameManager : MonoBehaviour
         gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber+gameData.powerLevel;
     }
 
+    private void OnUpdatePower()
+    {
+        gameData.RequirementMergeNumber=FindObjectOfType<LevelRequirementMerge>().LevelRequirementNumber+gameData.powerLevel;
+    }
+
 
     private void OnUIGameOver()
     {
@@ -156,6 +162,8 @@ public class GameManager : MonoBehaviour
     void ClearData()
     {
         gameData.isGameEnd=true;
+        buffData.playerInvincible=false;
+        buffData.playerIsDestroyer=false;
     }
 
     private void OnDead()

@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         if(!gameData.isGameEnd && playerData.canClick && Input.GetMouseButtonDown(0))
         {
             //CheckMove();
+            transform.DOScaleY(0.4f,0.2f).OnComplete(()=>transform.DOScaleY(0.5f,0.2f));
             StartCoroutine(ChangeRadius());
             EventManager.Broadcast(GameEvent.OnFingerPress);
         }
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     {
         level = 0;
         currentRadius = _startRadius;
+        transform.parent.localRotation=Quaternion.identity;
     }
 
     

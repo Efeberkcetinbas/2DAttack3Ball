@@ -30,12 +30,19 @@ public class PanelManager : MonoBehaviour
         EventManager.RemoveHandler(GameEvent.OnNextLevel,OnNextLevel);
     }
     
-    private void Update() 
+
+    public void StartGameButton()
     {
-        /*if(oneTime)
+        if(oneTime)
         {
+            EventManager.Broadcast(GameEvent.OnStartGame);
+            gameData.isGameEnd=false;   
+            StartPanel.gameObject.SetActive(false);
+            oneTime=false;
+            incrementalButton.SetActive(false);
+            earningButton.SetActive(false);
             //&& Input.GetTouch(0).position.y>Screen.height/2f
-            if(Input.touchCount>=1 && Input.GetTouch(0).phase == TouchPhase.Began)
+            /*if(Input.touchCount>=1 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 EventManager.Broadcast(GameEvent.OnStartGame);
                 gameData.isGameEnd=false;   
@@ -43,8 +50,8 @@ public class PanelManager : MonoBehaviour
                 oneTime=false;
                 incrementalButton.SetActive(false);
                 earningButton.SetActive(false);
-            }
-        }*/
+            }*/
+        }
     }
     
 

@@ -36,6 +36,7 @@ public class IncrementalManager : MonoBehaviour
             EventManager.Broadcast(GameEvent.OnUpdateCircleLevels);
             EventManager.Broadcast(GameEvent.OnUpdatePlayerLevel);    
             gameData.score=gameData.score-gameData.RequirementCoin;
+            EventManager.Broadcast(GameEvent.OnUpdatePower);
             EventManager.Broadcast(GameEvent.OnUIUpdate);
             UpdateRequirementMoneyForPower();
             CheckInteractablePower();
